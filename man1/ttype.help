@@ -1,4 +1,38 @@
 [NAME]
-ttypek - sth sth
+ttype - Types user's text on a virtual keyboard
+
+[SYNOPSIS]
+usage: ttype [-h] [-f FILE] [-n] [-g] [-V] [text]
+
+[DESCRIPTION]
+Reads your text from a file or stdin, or accepts it as a parameter. Then your text is typed on a virtual keyboard so as a result, it appears in the same terminal where you invoked ttype. The advantage comparing to echo or cat is that you can edit the text in terminal, and then for instance use it as a command. ttype accepts text which is encoded in UTF-8.
+
+[OPTIONS]
+positional arguments:
+  text                  text to be typed; if text is empty, stdin will be used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  file to be used as a source of text; file '-' (dash) means stdin
+  -n, --ignore-cr-lf    \r and \n characters will be ignored
+  -g, --foreground      stay in foreground before typing (don't move to background); you can use this option if ttype is called from a daemon
+  -V, --version         display version information
+
+[EXAMPLES]
+  ttype my_text
+  echo -n my_text | ttype
+  echo my_text | ttype -n
+  echo -n my_text | ttype -f -
+  echo -n my_text > my_file | ttype -f my_file
+  ttype -g my_text &
+
+[KNOWN ISSUES]
+There are problems with typing diacritical marks
+
+[AUTHOR]
+Grzegorz Krason
+
+[REPORTING BUGS]
+contact@krason.biz
 
 

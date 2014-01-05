@@ -16,7 +16,7 @@ bin/ttype:
 	strip bin/ttype
 
 man/ttype.1.gz: bin/ttype
-	help2man -N bin/ttype -i man1/ttype.help | gzip -9 - > man1/ttype.1.gz
+	help2man -v '1.0.0' -N echo -h '' -i man1/ttype.help | gzip -9 - > man1/ttype.1.gz
 
 deb/ttype_1.0.0_amd64.deb: bin/ttype man/ttype.1.gz deb/README.Debian deb/ttype.ctl
 	cd deb; equivs-build ttype.ctl
