@@ -1,0 +1,71 @@
+DESCRIPTION
+------------------------------------------------------------------------------
+TTYPE reads your text from a file or stdin, or accepts it as a parameter. Then
+your text is typed on a virtual keyboard so as a result, it appears in the
+same terminal where you invoked ttype. The advantage comparing to 'echo' or
+'cat' is that you can edit the text in terminal, and then for instance use it
+as a command. ttype accepts text which is encoded in UTF-8.
+
+TTYPE works for both, "real" terminal and terminal emulator under X session.
+
+
+REQUIREMENTS
+------------------------------------------------------------------------------
+
+Following files must be present in file system to let TTYPE work:
+
+   /dev/uinput or /dev/input/uinput
+   /proc/sys/kernel/printk
+
+In addition, TTYPE requires following commands to be available:
+
+   dumpkeys
+   xte
+
+In order to install them try:
+
+   # apt-get install console-tools xautomation
+
+
+TTYPE has been tested in Debian 3.2.32-1 x86_64 GNU/Linux.
+
+BUILDING
+------------------------------------------------------------------------------
+
+TTYPE requires root privileges in order to create virtual keyboard. In order
+to let regular user use TTYPE, sticky bit should be set to 1. However, this
+doesn't make sense in case of a script. This is why ttype.py should be
+compiled to executable version first. In order to do that you need Freeze or
+similar software.
+
+1. Obtain Freeze from:
+
+     http://svn.python.org/projects/python/trunk/Tools/freeze/
+
+2. Configure Freeze.
+
+   It may ne required to create a symlink to config:
+
+   # cd /usr/lib/python2.7 
+   # sudo ln -s config-x86_64-linux-gnu/ config
+
+   Or install some packages, for example zlib1g-dev:
+
+   # apt-get install zlib1g-dev
+
+   For more help, please refer to documentation of Freeze
+
+3. Convert ttype.py to C and build
+
+   $ freeze ttype.py
+   $ make
+
+
+INSTALLATION
+------------------------------------------------------------------------------
+
+   # cp ttype /usr/bin/
+   # chmod +s /usr/bin/ttype 
+
+
+

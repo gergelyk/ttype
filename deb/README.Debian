@@ -1,0 +1,5 @@
+TTYPE reads your text from a file or stdin, or accepts it as a parameter. Then
+your text is typed on a virtual keyboard so as a result, it appears in the
+same terminal where you invoked ttype. The advantage comparing to 'echo' or
+'cat' is that you can edit the text in terminal, and then for instance use it
+as a command. ttype accepts text which is encoded in UTF-8.
