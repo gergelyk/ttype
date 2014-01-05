@@ -344,25 +344,28 @@ def main(args):
 if __name__ == '__main__':
 
     description = \
-    """
-    Reads your text from a file or stdin, or accepts it as a parameter. Then your text is typed on a virtual keyboard so as
-    a result, it appears in the same terminal where you invoked ttype. The advantage comparing to 'echo' or 'cat' is that you
-    can edit the text in terminal, and then for instance use it as a command. ttype accepts text which is encoded in UTF-8.
+"""
+Reads your text from a file or stdin, or accepts it as a parameter. Then your
+text is typed on a virtual keyboard so as a result, it appears in the same
+terminal where you invoked ttype. The advantage comparing to 'echo' or 'cat'
+is that you can edit the text in terminal, and then for instance use it as a
+command. ttype accepts text which is encoded in UTF-8.
 
-    EXAMPLES:
-    $ ttype my_text
-    $ echo -n my_text | ttype
-    $ echo my_text | ttype -n
-    $ echo -n my_text | ttype -f -
-    $ echo -n my_text > my_file | ttype -f my_file
-    $ ttype -g my_text &
+EXAMPLES:
+  $ ttype my_text
+  $ echo -n my_text | ttype
+  $ echo my_text | ttype -n
+  $ echo -n my_text | ttype -f -
+  $ echo -n my_text > my_file | ttype -f my_file
+  $ ttype -g my_text &
 
-    KNOWN ISSUES:
-    - There are problems with typing diacritical marks
+KNOWN ISSUES:
+  There are problems with typing diacritical marks
 
-    AUTHOR:
-    Grzegorz Krason
-    """
+AUTHOR:
+  Grzegorz Krason
+
+"""
 
     parser = argparse.ArgumentParser(description=description, formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('text', nargs='?', help='text to be typed; if text is empty, stdin will be used')
