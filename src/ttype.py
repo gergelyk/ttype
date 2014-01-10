@@ -341,9 +341,9 @@ def main(args):
         except IOError:
             raise Exception('Cannot read stdin')
 
-if __name__ == '__main__':
+#-----------------------------------------------------------------------------
 
-    description = \
+description = \
 """
 Reads your text from a file or stdin, or accepts it as a parameter. Then your
 text is typed on a virtual keyboard so as a result, it appears in the same
@@ -351,6 +351,11 @@ terminal where you invoked ttype. The advantage comparing to 'echo' or 'cat'
 is that you can edit the text in terminal, and then for instance use it as a
 command. ttype accepts text which is encoded in UTF-8.
 
+OPTIONS:
+"""
+
+epilog = \
+"""
 EXAMPLES:
   $ ttype my_text
   $ echo -n my_text | ttype
@@ -365,15 +370,23 @@ KNOWN ISSUES:
 AUTHOR:
   Grzegorz Krason
 
+REPORTING BUGS:
+  contact@krason.biz
 """
 
-    parser = argparse.ArgumentParser(description=description, formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('text', nargs='?', help='text to be typed; if text is empty, stdin will be used')
-    parser.add_argument('-f', '--file', help='file to be used as a source of text; file \'-\' (dash) means stdin')
-    parser.add_argument('-n', '--ignore-cr-lf', action='store_true', help='\\r and \\n characters will be ignored')
-    parser.add_argument('-g', '--foreground', action='store_true',
-        help='stay in foreground before typing (don\'t move to background); you can use this option if ttype is called from a daemon')
-    parser.add_argument('-V', '--version', action='store_true', help='display version information')
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description=description, epilog=epilog, formatter_class=argparse.RawTextHelpFormatter, add_help=False)
+
+#    subparsers = parser.add_subparsers()
+#    parser = subparsers.add_parser('stop', formatter_class=argparse.RawTextHelpFormatter)
+
+    parser.add_argument('text', nargs='?', help='text to be typed; if text is empty, stdin will be used\n')
+    parser.add_argument('-f', '--file', help='file to be used as a source of text; file \'-\' (dash)\nmeans stdin\n\n')
+    parser.add_argument('-n', '--ignore-cr-lf', action='store_true', help='\\r and \\n characters will be ignored\n\n')
+    parser.add_argument('-g', '--foreground', action='store_true', help='stay in foreground before typing (don\'t move to\nbackground); you can use this option if ttype is called\nfrom a daemon\n\n')
+    parser.add_argument('-V', '--version', action='store_true', help='display version information\n\n')
+    parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS, help='show this help message and exit\n')
 
     args = parser.parse_args()
 

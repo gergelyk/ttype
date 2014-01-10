@@ -13,9 +13,16 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -f FILE, --file FILE  file to be used as a source of text; file '-' (dash) means stdin
-  -n, --ignore-cr-lf    \r and \n characters will be ignored
-  -g, --foreground      stay in foreground before typing (don't move to background); you can use this option if ttype is called from a daemon
+
+  -f FILE, --file FILE  file to be used as a source of text; file '-'
+                        (dash) means stdin
+
+  -n, --ignore-cr-lf    CR and LF characters will be ignored
+
+  -g, --foreground      stay in foreground before typing (don't move
+                        to background); you can use this option if
+                        ttype is called from a daemon
+
   -V, --version         display version information
 
 [EXAMPLES]
