@@ -1,0 +1,10 @@
+#/bin/bash
+
+echo -e "abc \`-=[]\\;',./~\x21@#\$abc%^&*()_+{}|:\"<>?abc\nabc\rA" | ./ttype.py -n
+#expected: abc `-=[]\;',./~!@#$abc%^&*()_+{}|:"<>?abcabcA
+
+#echo -e "ą" | ./ttype.py -n
+#expected: Exception: Some of the characters are not supported
+
+
+
