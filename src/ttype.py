@@ -229,11 +229,14 @@ def utf8_to_keycodes(text):
     lines = result.splitlines()[1:]
 
     # 2. Parse keycodes and unicodes
+
+    reduce_0b00 = lambda code: code-0x0b00 if code & 0xff00 == 0x0b00 else code
+
     split_lines = [line.split() for line in lines]
     keycodes_str = [line[1] for line in split_lines]
     unicodes_str = [line[3:] for line in split_lines]
     keycodes = [int(code) for code in keycodes_str]
-    unicodes = [[int(code[-4:], 16) % 0x0b00 for code in codes] for codes in unicodes_str]
+    unicodes = [[reduce_0b00(int(code[-4:], 16)) for code in codes] for codes in unicodes_str]
 
     #print keycodes
     #print unicodes
@@ -245,6 +248,7 @@ def utf8_to_keycodes(text):
         for i, codes in enumerate(unicodes):
             if code in codes:
                 return (keycodes[i], codes.index(code))
+        raise Exception('Some of the characters are not supported')
 
     text_ord = [ord(x) for x in text] # list of UTF-8 codes
     raw_plan = [find_keycode(x) for x in text_ord] # List of (keycode, modifier) tuples
@@ -278,9 +282,6 @@ def type_text(text, ignore_cr_lf, term_is_real):
 
     if ignore_cr_lf:
         text = text.replace('\r', '').replace('\n', '')
-
-    # test: echo -e "abc \`-=[]\;',./~\x21@#\$abc%^&*()_+{}|:\"<>?abc\nabc\rA" | ttype -n
-    # expected: abc `-=[]\;',./~!@#$abc%^&*()_+{}|:"<>?abcabcA
 
     if text:
         if term_is_real:
