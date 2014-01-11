@@ -284,8 +284,12 @@ def type_text(text, ignore_cr_lf, term_is_real):
             plan = utf8_to_keycodes(text)
             press_keys(plan)
         else:
-            os.system('echo str "' + text + '" | xte')
-
+            #' / are fine
+            #$"\ are not
+            text = text.replace('\\', '\\\\') #must be escaped first
+            text = text.replace('$', '\\$')
+            text = text.replace('"', '\\"')
+            os.system('echo \"str ' + text + '\" | xte')
 #-----------------------------------------------------------------------------
 
 def detach():
