@@ -19,12 +19,13 @@ Following files must be present in file system to let TTYPE work:
 
 In addition, TTYPE requires following commands to be available:
 
-   dumpkeys
-   xte
+   dumpkeys  (only for terminal)
+   xte       (only for X)
+   setxkbmap (only for X)
 
 In order to install them try:
 
-   # apt-get install console-tools xautomation
+   # apt-get install console-tools xautomation x11-xkb-utils
 
 
 TTYPE has been tested in Debian 3.2.32-1 x86_64 GNU/Linux.

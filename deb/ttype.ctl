@@ -10,7 +10,7 @@ Package: ttype
 Version: 1.0.0
 Maintainer: Grzegorz Krason <contact@krason.biz>
 # Pre-Depends: <comma-separated list of packages>
-Depends: libc6 (>= 2.7), xautomation (>= 1.03-1.1), console-tools(>= 1:0.2.3dbs-70)
+Depends: libc6 (>= 2.7), xautomation (>= 1.03-1.1), console-tools(>= 1:0.2.3dbs-70), x11-xkb-utils(>= 7.7~1)
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>

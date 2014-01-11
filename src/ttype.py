@@ -279,17 +279,33 @@ def type_text(text, ignore_cr_lf, term_is_real):
     if ignore_cr_lf:
         text = text.replace('\r', '').replace('\n', '')
 
+    # test: echo -e "abc \`-=[]\;',./~\x21@#\$abc%^&*()_+{}|:\"<>?abc\nabc\rA" | ttype -n
+    # expected: abc `-=[]\;',./~!@#$abc%^&*()_+{}|:"<>?abcabcA
+
     if text:
         if term_is_real:
             plan = utf8_to_keycodes(text)
             press_keys(plan)
         else:
-            #' / are fine
-            #$"\ are not
+            result = subprocess.check_output('setxkbmap -query', shell=True)
+            lines = result.splitlines()
+            split_lines = [line.split() for line in lines]
+            
+            get_item = lambda title: split_lines[[item[0] for item in split_lines].index(title + ':')][1]
+            rules, model, layout = tuple(get_item(title) for title in ['rules', 'model', 'layout'])            
+
+            #in sh
+            #' / don't have to be escaped
+            #$"\` have to be escaped
             text = text.replace('\\', '\\\\') #must be escaped first
             text = text.replace('$', '\\$')
             text = text.replace('"', '\\"')
+            text = text.replace('`', '\\`')
+
+            os.system('setxkbmap -rules ' + rules + ' -model ' + model + ' -layout ' + 'us') # xte assumes layout to be 'us'
             os.system('echo \"str ' + text + '\" | xte')
+            os.system('setxkbmap -rules ' + rules + ' -model ' + model + ' -layout ' + layout) # restore orginal settings
+
 #-----------------------------------------------------------------------------
 
 def detach():
