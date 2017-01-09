@@ -3,12 +3,12 @@
 # Source: <source package name; defaults to package name>
 # Section: misc
 # Priority: optional
-Homepage: http://www.krason.biz/#ttype
+Homepage: http://krason.me/software/ttype.html
 Standards-Version: 3.9.2
 
 Package: ttype
-Version: 1.0.0
-Maintainer: Grzegorz Krason <contact@krason.biz>
+Version: 1.0.1
+Maintainer: Grzegorz Krason <grzegorz@krason.me>
 # Pre-Depends: <comma-separated list of packages>
 Depends: libc6 (>= 2.7), xautomation (>= 1.03-1.1), console-tools(>= 1:0.2.3dbs-70), x11-xkb-utils(>= 7.7~1)
 # Recommends: <comma-separated list of packages>

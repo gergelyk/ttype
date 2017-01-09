@@ -392,7 +392,7 @@ AUTHOR:
   Grzegorz Krason
 
 REPORTING BUGS:
-  contact@krason.biz
+  grzegorz@krason.me
 """
 
 if __name__ == '__main__':
