@@ -22,6 +22,7 @@ More Info
 
 For information about usage invoke ttype -h
 
-    $ sudo make install
-    $ make export
+.. code-block:: bash
+   $ sudo make install
+   $ make export
 
