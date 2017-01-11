@@ -16,7 +16,7 @@ Building
 
 For building and creating release, invoke:
 
-..
+::
 
    $ sudo make install
    $ make export
