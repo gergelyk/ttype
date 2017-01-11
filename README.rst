@@ -11,6 +11,16 @@ Reads your text from a file or stdin, or accepts it as an argument. Then your te
 
 Behavior of ttype is similar to 'echo' or 'cat' with this difference that your text doesn't go to stdout. Instead of that it can be edited in terminal and used for instance as a command.
 
+Building
+--------
+
+For building and creating release, invoke:
+
+.. code-block:: sh
+
+   $ sudo make install
+   $ make export
+
 Features
 --------
 
@@ -22,7 +32,5 @@ More Info
 
 For information about usage invoke ttype -h
 
-.. code-block:: bash
-   $ sudo make install
-   $ make export
+
 
