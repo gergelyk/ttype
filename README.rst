@@ -22,6 +22,6 @@ More Info
 
 For information about usage invoke ttype -h
 
-$ sudo make install
-$ make export
+$ sudo make install  
+$ make export  
 
